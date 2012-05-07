@@ -2,10 +2,20 @@
     CodeBehind="DetalheProjeto.aspx.cs" Inherits="UI.DetalheProjeto" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(function () {
-            alert('oi');
+            $('.oi a').live('click', function () {
+                var idhref = $(this).attr("href").replace('#', '');
+                $(".tab-pane").each(function () {
+                    var id = $(this).attr("id");
+                    var componente = $(this);
+                    if (id == idhref)
+                        $(componente).addClass("active");
+                    else {
+                        $(componente).removeClass("active");
+                    }
+                });
+            });
         });
     </script>
 </asp:Content>
@@ -17,27 +27,32 @@
         <hr />
         <div class="tabbable tabs-left">
             <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#lA">Cadastrar de Obra</a></li>
-                <li class=""><a data-toggle="tab" href="#lB">Cadastrar Exemplar</a></li>
-                <li class=""><a data-toggle="tab" href="#lC">Section 3</a></li>
+                <li class="oi active"><a data-toggle="tab" href="#lA">Cadastrar de Obra</a></li>
+                <li class="oi"><a data-toggle="tab" href="#lB">Cadastrar Exemplar</a></li>
+                <li class="oi"><a data-toggle="tab" href="#lC">Section 3</a></li>
             </ul>
             <div class="tab-content">
                 <div id="lA" class="tab-pane active">
                     <div class="row-fluid">
                         <div class="span4">
-                            <h2 class="label label-info">TO DO</h2>
+                            <h2 class="label label-info">
+                                TO DO</h2>
                             <ul class="nav nav-list">
                                 <li>
-                                    <div class="alert"><span>Tela Usuario</span></div>
+                                    <div class="alert">
+                                        <span>Tela Usuario</span></div>
                                 </li>
                                 <li>
-                                    <div class="alert"><span>Tela Usuario</span></div>
+                                    <div class="alert">
+                                        <span>Tela Usuario</span></div>
                                 </li>
                                 <li>
-                                    <div class="alert"><span>Tela Usuario</span></div>
+                                    <div class="alert">
+                                        <span>Tela Usuario</span></div>
                                 </li>
                                 <li>
-                                    <div class="alert"><span>Tela Usuario</span></div>
+                                    <div class="alert">
+                                        <span>Tela Usuario</span></div>
                                 </li>
                             </ul>
                         </div>
@@ -47,16 +62,20 @@
                                 Impeded</h2>
                             <ul class="nav nav-list">
                                 <li>
-                                    <div class="alert"><span>Tela Usuario</span></div>
+                                    <div class="alert">
+                                        <span>Tela Usuario</span></div>
                                 </li>
                                 <li>
-                                    <div class="alert"><span>Tela Usuario</span></div>
+                                    <div class="alert">
+                                        <span>Tela Usuario</span></div>
                                 </li>
                                 <li>
-                                    <div class="alert"><span>Tela Usuario</span></div>
+                                    <div class="alert">
+                                        <span>Tela Usuario</span></div>
                                 </li>
                                 <li>
-                                    <div class="alert"><span>Tela Usuario</span></div>
+                                    <div class="alert">
+                                        <span>Tela Usuario</span></div>
                                 </li>
                             </ul>
                         </div>
@@ -66,16 +85,20 @@
                                 Done</h2>
                             <ul class="nav nav-list">
                                 <li>
-                                    <div class="alert"><span>Tela Usuario</span></div>
+                                    <div class="alert">
+                                        <span>Tela Usuario</span></div>
                                 </li>
                                 <li>
-                                    <div class="alert"><span>Tela Usuario</span></div>
+                                    <div class="alert">
+                                        <span>Tela Usuario</span></div>
                                 </li>
                                 <li>
-                                    <div class="alert"><span>Tela Usuario</span></div>
+                                    <div class="alert">
+                                        <span>Tela Usuario</span></div>
                                 </li>
                                 <li>
-                                    <div class="alert"><span>Tela Usuario</span></div>
+                                    <div class="alert">
+                                        <span>Tela Usuario</span></div>
                                 </li>
                             </ul>
                         </div>
@@ -92,9 +115,34 @@
                 </div>
             </div>
         </div>
-        <hr/>
+        <h1>
+            In progress</h1>
+        <hr />
         <div class="well">
-            Ola mundo
+            <div class="row-fluid">
+                <div class="span4" style="background-color: #EFEFEF; padding: 10px 10px">
+                    <h2>
+                        Rafael Poveda</h2>
+                    <ul class="nav">
+                        <li style="width: 200px;">
+                            <div class="alert">
+                                <span>Tela Usuario</span></div>
+                        </li>
+                    </ul>
+                </div>
+                <!--/span-->
+                <div class="span4" style="background-color: #EFEFEF; padding: 10px 10px">
+                    <h2>
+                        Rafael Poveda</h2>
+                    <ul class="nav">
+                        <li style="width: 200px;">
+                            <div class="alert">
+                                <span>Tela Usuario</span></div>
+                        </li>
+                    </ul>
+                </div>
+                <!--/span-->
+            </div>
         </div>
     </div>
 </asp:Content>

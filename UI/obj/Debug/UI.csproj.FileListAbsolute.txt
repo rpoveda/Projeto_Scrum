@@ -1,9 +1,9 @@
-C:\Projects\Developer\Project_Scrum\UI\obj\Debug\ResolveAssemblyReference.cache
 C:\Projects\Developer\Project_Scrum\UI\bin\UI.dll
 C:\Projects\Developer\Project_Scrum\UI\bin\UI.pdb
 C:\Projects\Developer\Project_Scrum\UI\bin\BL.dll
 C:\Projects\Developer\Project_Scrum\UI\bin\ML.dll
 C:\Projects\Developer\Project_Scrum\UI\bin\BL.pdb
 C:\Projects\Developer\Project_Scrum\UI\bin\ML.pdb
+C:\Projects\Developer\Project_Scrum\UI\obj\Debug\ResolveAssemblyReference.cache
 C:\Projects\Developer\Project_Scrum\UI\obj\Debug\UI.dll
 C:\Projects\Developer\Project_Scrum\UI\obj\Debug\UI.pdb

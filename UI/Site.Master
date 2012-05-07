@@ -44,6 +44,7 @@
                         <li class="active"><a href="#">Home</a> </li>
                         <li><a href="#">Mensagens</a></li>
                         <li><a href="#">Profile</a></li>
+                        <li><a href="NovoProjeto.aspx">Novo Projeto</a></li>
                     </ul>
                 </div>
             </div>
