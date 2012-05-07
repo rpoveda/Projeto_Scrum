@@ -16,6 +16,14 @@ using System.Xml.Serialization;
 using System.Runtime.Serialization;
 
 [assembly: EdmSchemaAttribute()]
+#region EDM Relationship Metadata
+
+[assembly: EdmRelationshipAttribute("projeto_scrumModel", "FKCodigoItem", "item", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ML.Date.item), "tarefa", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ML.Date.tarefa), true)]
+[assembly: EdmRelationshipAttribute("projeto_scrumModel", "FKCodigoProjeto", "projeto", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ML.Date.projeto), "item", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ML.Date.item), true)]
+[assembly: EdmRelationshipAttribute("projeto_scrumModel", "FKUsuarioProjeto_Projeto", "projeto", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ML.Date.projeto), "usuario_projeto", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ML.Date.usuario_projeto), true)]
+[assembly: EdmRelationshipAttribute("projeto_scrumModel", "FKTarefaUsuario_Tarefa", "tarefa", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ML.Date.tarefa), "tarefa_usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ML.Date.tarefa_usuario), true)]
+
+#endregion
 
 namespace ML.Date
 {
@@ -68,6 +76,70 @@ namespace ML.Date
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<item> item
+        {
+            get
+            {
+                if ((_item == null))
+                {
+                    _item = base.CreateObjectSet<item>("item");
+                }
+                return _item;
+            }
+        }
+        private ObjectSet<item> _item;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<projeto> projeto
+        {
+            get
+            {
+                if ((_projeto == null))
+                {
+                    _projeto = base.CreateObjectSet<projeto>("projeto");
+                }
+                return _projeto;
+            }
+        }
+        private ObjectSet<projeto> _projeto;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tarefa> tarefa
+        {
+            get
+            {
+                if ((_tarefa == null))
+                {
+                    _tarefa = base.CreateObjectSet<tarefa>("tarefa");
+                }
+                return _tarefa;
+            }
+        }
+        private ObjectSet<tarefa> _tarefa;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tarefa_usuario> tarefa_usuario
+        {
+            get
+            {
+                if ((_tarefa_usuario == null))
+                {
+                    _tarefa_usuario = base.CreateObjectSet<tarefa_usuario>("tarefa_usuario");
+                }
+                return _tarefa_usuario;
+            }
+        }
+        private ObjectSet<tarefa_usuario> _tarefa_usuario;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<usuario> usuario
         {
             get
@@ -80,9 +152,57 @@ namespace ML.Date
             }
         }
         private ObjectSet<usuario> _usuario;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<usuario_projeto> usuario_projeto
+        {
+            get
+            {
+                if ((_usuario_projeto == null))
+                {
+                    _usuario_projeto = base.CreateObjectSet<usuario_projeto>("usuario_projeto");
+                }
+                return _usuario_projeto;
+            }
+        }
+        private ObjectSet<usuario_projeto> _usuario_projeto;
 
         #endregion
         #region AddTo Methods
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the item EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToitem(item item)
+        {
+            base.AddObject("item", item);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the projeto EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToprojeto(projeto projeto)
+        {
+            base.AddObject("projeto", projeto);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tarefa EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotarefa(tarefa tarefa)
+        {
+            base.AddObject("tarefa", tarefa);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tarefa_usuario EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotarefa_usuario(tarefa_usuario tarefa_usuario)
+        {
+            base.AddObject("tarefa_usuario", tarefa_usuario);
+        }
     
         /// <summary>
         /// Deprecated Method for adding a new object to the usuario EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
@@ -90,6 +210,14 @@ namespace ML.Date
         public void AddTousuario(usuario usuario)
         {
             base.AddObject("usuario", usuario);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the usuario_projeto EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTousuario_projeto(usuario_projeto usuario_projeto)
+        {
+            base.AddObject("usuario_projeto", usuario_projeto);
         }
 
         #endregion
@@ -99,6 +227,920 @@ namespace ML.Date
     #endregion
     
     #region Entities
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="projeto_scrumModel", Name="item")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class item : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new item object.
+        /// </summary>
+        /// <param name="codigoItem">Initial value of the CodigoItem property.</param>
+        public static item Createitem(global::System.Int32 codigoItem)
+        {
+            item item = new item();
+            item.CodigoItem = codigoItem;
+            return item;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CodigoItem
+        {
+            get
+            {
+                return _CodigoItem;
+            }
+            set
+            {
+                if (_CodigoItem != value)
+                {
+                    OnCodigoItemChanging(value);
+                    ReportPropertyChanging("CodigoItem");
+                    _CodigoItem = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("CodigoItem");
+                    OnCodigoItemChanged();
+                }
+            }
+        }
+        private global::System.Int32 _CodigoItem;
+        partial void OnCodigoItemChanging(global::System.Int32 value);
+        partial void OnCodigoItemChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> CodigoProjeto
+        {
+            get
+            {
+                return _CodigoProjeto;
+            }
+            set
+            {
+                OnCodigoProjetoChanging(value);
+                ReportPropertyChanging("CodigoProjeto");
+                _CodigoProjeto = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CodigoProjeto");
+                OnCodigoProjetoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _CodigoProjeto;
+        partial void OnCodigoProjetoChanging(Nullable<global::System.Int32> value);
+        partial void OnCodigoProjetoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String NomeItem
+        {
+            get
+            {
+                return _NomeItem;
+            }
+            set
+            {
+                OnNomeItemChanging(value);
+                ReportPropertyChanging("NomeItem");
+                _NomeItem = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("NomeItem");
+                OnNomeItemChanged();
+            }
+        }
+        private global::System.String _NomeItem;
+        partial void OnNomeItemChanging(global::System.String value);
+        partial void OnNomeItemChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DescricaoItem
+        {
+            get
+            {
+                return _DescricaoItem;
+            }
+            set
+            {
+                OnDescricaoItemChanging(value);
+                ReportPropertyChanging("DescricaoItem");
+                _DescricaoItem = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("DescricaoItem");
+                OnDescricaoItemChanged();
+            }
+        }
+        private global::System.String _DescricaoItem;
+        partial void OnDescricaoItemChanging(global::System.String value);
+        partial void OnDescricaoItemChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ValorItem
+        {
+            get
+            {
+                return _ValorItem;
+            }
+            set
+            {
+                OnValorItemChanging(value);
+                ReportPropertyChanging("ValorItem");
+                _ValorItem = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ValorItem");
+                OnValorItemChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ValorItem;
+        partial void OnValorItemChanging(Nullable<global::System.Int32> value);
+        partial void OnValorItemChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> DataFinalizacaoItem
+        {
+            get
+            {
+                return _DataFinalizacaoItem;
+            }
+            set
+            {
+                OnDataFinalizacaoItemChanging(value);
+                ReportPropertyChanging("DataFinalizacaoItem");
+                _DataFinalizacaoItem = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DataFinalizacaoItem");
+                OnDataFinalizacaoItemChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _DataFinalizacaoItem;
+        partial void OnDataFinalizacaoItemChanging(Nullable<global::System.DateTime> value);
+        partial void OnDataFinalizacaoItemChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String StatusItem
+        {
+            get
+            {
+                return _StatusItem;
+            }
+            set
+            {
+                OnStatusItemChanging(value);
+                ReportPropertyChanging("StatusItem");
+                _StatusItem = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("StatusItem");
+                OnStatusItemChanged();
+            }
+        }
+        private global::System.String _StatusItem;
+        partial void OnStatusItemChanging(global::System.String value);
+        partial void OnStatusItemChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("projeto_scrumModel", "FKCodigoItem", "tarefa")]
+        public EntityCollection<tarefa> tarefa
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<tarefa>("projeto_scrumModel.FKCodigoItem", "tarefa");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<tarefa>("projeto_scrumModel.FKCodigoItem", "tarefa", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("projeto_scrumModel", "FKCodigoProjeto", "projeto")]
+        public projeto projeto
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<projeto>("projeto_scrumModel.FKCodigoProjeto", "projeto").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<projeto>("projeto_scrumModel.FKCodigoProjeto", "projeto").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<projeto> projetoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<projeto>("projeto_scrumModel.FKCodigoProjeto", "projeto");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<projeto>("projeto_scrumModel.FKCodigoProjeto", "projeto", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="projeto_scrumModel", Name="projeto")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class projeto : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new projeto object.
+        /// </summary>
+        /// <param name="codigoProjeto">Initial value of the CodigoProjeto property.</param>
+        public static projeto Createprojeto(global::System.Int32 codigoProjeto)
+        {
+            projeto projeto = new projeto();
+            projeto.CodigoProjeto = codigoProjeto;
+            return projeto;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CodigoProjeto
+        {
+            get
+            {
+                return _CodigoProjeto;
+            }
+            set
+            {
+                if (_CodigoProjeto != value)
+                {
+                    OnCodigoProjetoChanging(value);
+                    ReportPropertyChanging("CodigoProjeto");
+                    _CodigoProjeto = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("CodigoProjeto");
+                    OnCodigoProjetoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _CodigoProjeto;
+        partial void OnCodigoProjetoChanging(global::System.Int32 value);
+        partial void OnCodigoProjetoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String NomeProjeto
+        {
+            get
+            {
+                return _NomeProjeto;
+            }
+            set
+            {
+                OnNomeProjetoChanging(value);
+                ReportPropertyChanging("NomeProjeto");
+                _NomeProjeto = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("NomeProjeto");
+                OnNomeProjetoChanged();
+            }
+        }
+        private global::System.String _NomeProjeto;
+        partial void OnNomeProjetoChanging(global::System.String value);
+        partial void OnNomeProjetoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DescricaoProjeto
+        {
+            get
+            {
+                return _DescricaoProjeto;
+            }
+            set
+            {
+                OnDescricaoProjetoChanging(value);
+                ReportPropertyChanging("DescricaoProjeto");
+                _DescricaoProjeto = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("DescricaoProjeto");
+                OnDescricaoProjetoChanged();
+            }
+        }
+        private global::System.String _DescricaoProjeto;
+        partial void OnDescricaoProjetoChanging(global::System.String value);
+        partial void OnDescricaoProjetoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String UrlProjeto
+        {
+            get
+            {
+                return _UrlProjeto;
+            }
+            set
+            {
+                OnUrlProjetoChanging(value);
+                ReportPropertyChanging("UrlProjeto");
+                _UrlProjeto = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("UrlProjeto");
+                OnUrlProjetoChanged();
+            }
+        }
+        private global::System.String _UrlProjeto;
+        partial void OnUrlProjetoChanging(global::System.String value);
+        partial void OnUrlProjetoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> DataProjeto
+        {
+            get
+            {
+                return _DataProjeto;
+            }
+            set
+            {
+                OnDataProjetoChanging(value);
+                ReportPropertyChanging("DataProjeto");
+                _DataProjeto = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DataProjeto");
+                OnDataProjetoChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _DataProjeto;
+        partial void OnDataProjetoChanging(Nullable<global::System.DateTime> value);
+        partial void OnDataProjetoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> DataFinalizacao
+        {
+            get
+            {
+                return _DataFinalizacao;
+            }
+            set
+            {
+                OnDataFinalizacaoChanging(value);
+                ReportPropertyChanging("DataFinalizacao");
+                _DataFinalizacao = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DataFinalizacao");
+                OnDataFinalizacaoChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _DataFinalizacao;
+        partial void OnDataFinalizacaoChanging(Nullable<global::System.DateTime> value);
+        partial void OnDataFinalizacaoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> CodigoUsuario
+        {
+            get
+            {
+                return _CodigoUsuario;
+            }
+            set
+            {
+                OnCodigoUsuarioChanging(value);
+                ReportPropertyChanging("CodigoUsuario");
+                _CodigoUsuario = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CodigoUsuario");
+                OnCodigoUsuarioChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _CodigoUsuario;
+        partial void OnCodigoUsuarioChanging(Nullable<global::System.Int32> value);
+        partial void OnCodigoUsuarioChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("projeto_scrumModel", "FKCodigoProjeto", "item")]
+        public EntityCollection<item> item
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<item>("projeto_scrumModel.FKCodigoProjeto", "item");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<item>("projeto_scrumModel.FKCodigoProjeto", "item", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("projeto_scrumModel", "FKUsuarioProjeto_Projeto", "usuario_projeto")]
+        public EntityCollection<usuario_projeto> usuario_projeto
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<usuario_projeto>("projeto_scrumModel.FKUsuarioProjeto_Projeto", "usuario_projeto");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<usuario_projeto>("projeto_scrumModel.FKUsuarioProjeto_Projeto", "usuario_projeto", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="projeto_scrumModel", Name="tarefa")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class tarefa : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new tarefa object.
+        /// </summary>
+        /// <param name="codigoTarefa">Initial value of the CodigoTarefa property.</param>
+        public static tarefa Createtarefa(global::System.Int32 codigoTarefa)
+        {
+            tarefa tarefa = new tarefa();
+            tarefa.CodigoTarefa = codigoTarefa;
+            return tarefa;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CodigoTarefa
+        {
+            get
+            {
+                return _CodigoTarefa;
+            }
+            set
+            {
+                if (_CodigoTarefa != value)
+                {
+                    OnCodigoTarefaChanging(value);
+                    ReportPropertyChanging("CodigoTarefa");
+                    _CodigoTarefa = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("CodigoTarefa");
+                    OnCodigoTarefaChanged();
+                }
+            }
+        }
+        private global::System.Int32 _CodigoTarefa;
+        partial void OnCodigoTarefaChanging(global::System.Int32 value);
+        partial void OnCodigoTarefaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> CodigoItem
+        {
+            get
+            {
+                return _CodigoItem;
+            }
+            set
+            {
+                OnCodigoItemChanging(value);
+                ReportPropertyChanging("CodigoItem");
+                _CodigoItem = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CodigoItem");
+                OnCodigoItemChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _CodigoItem;
+        partial void OnCodigoItemChanging(Nullable<global::System.Int32> value);
+        partial void OnCodigoItemChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String NomeTarefa
+        {
+            get
+            {
+                return _NomeTarefa;
+            }
+            set
+            {
+                OnNomeTarefaChanging(value);
+                ReportPropertyChanging("NomeTarefa");
+                _NomeTarefa = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("NomeTarefa");
+                OnNomeTarefaChanged();
+            }
+        }
+        private global::System.String _NomeTarefa;
+        partial void OnNomeTarefaChanging(global::System.String value);
+        partial void OnNomeTarefaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DescricaoTarefa
+        {
+            get
+            {
+                return _DescricaoTarefa;
+            }
+            set
+            {
+                OnDescricaoTarefaChanging(value);
+                ReportPropertyChanging("DescricaoTarefa");
+                _DescricaoTarefa = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("DescricaoTarefa");
+                OnDescricaoTarefaChanged();
+            }
+        }
+        private global::System.String _DescricaoTarefa;
+        partial void OnDescricaoTarefaChanging(global::System.String value);
+        partial void OnDescricaoTarefaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ValorTarefa
+        {
+            get
+            {
+                return _ValorTarefa;
+            }
+            set
+            {
+                OnValorTarefaChanging(value);
+                ReportPropertyChanging("ValorTarefa");
+                _ValorTarefa = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ValorTarefa");
+                OnValorTarefaChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ValorTarefa;
+        partial void OnValorTarefaChanging(Nullable<global::System.Int32> value);
+        partial void OnValorTarefaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String StatusTarefa
+        {
+            get
+            {
+                return _StatusTarefa;
+            }
+            set
+            {
+                OnStatusTarefaChanging(value);
+                ReportPropertyChanging("StatusTarefa");
+                _StatusTarefa = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("StatusTarefa");
+                OnStatusTarefaChanged();
+            }
+        }
+        private global::System.String _StatusTarefa;
+        partial void OnStatusTarefaChanging(global::System.String value);
+        partial void OnStatusTarefaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> DataFinalizacaoTarefa
+        {
+            get
+            {
+                return _DataFinalizacaoTarefa;
+            }
+            set
+            {
+                OnDataFinalizacaoTarefaChanging(value);
+                ReportPropertyChanging("DataFinalizacaoTarefa");
+                _DataFinalizacaoTarefa = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DataFinalizacaoTarefa");
+                OnDataFinalizacaoTarefaChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _DataFinalizacaoTarefa;
+        partial void OnDataFinalizacaoTarefaChanging(Nullable<global::System.DateTime> value);
+        partial void OnDataFinalizacaoTarefaChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("projeto_scrumModel", "FKCodigoItem", "item")]
+        public item item
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<item>("projeto_scrumModel.FKCodigoItem", "item").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<item>("projeto_scrumModel.FKCodigoItem", "item").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<item> itemReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<item>("projeto_scrumModel.FKCodigoItem", "item");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<item>("projeto_scrumModel.FKCodigoItem", "item", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("projeto_scrumModel", "FKTarefaUsuario_Tarefa", "tarefa_usuario")]
+        public EntityCollection<tarefa_usuario> tarefa_usuario
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<tarefa_usuario>("projeto_scrumModel.FKTarefaUsuario_Tarefa", "tarefa_usuario");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<tarefa_usuario>("projeto_scrumModel.FKTarefaUsuario_Tarefa", "tarefa_usuario", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="projeto_scrumModel", Name="tarefa_usuario")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class tarefa_usuario : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new tarefa_usuario object.
+        /// </summary>
+        /// <param name="codigoTarefaUsuario">Initial value of the CodigoTarefaUsuario property.</param>
+        public static tarefa_usuario Createtarefa_usuario(global::System.Int32 codigoTarefaUsuario)
+        {
+            tarefa_usuario tarefa_usuario = new tarefa_usuario();
+            tarefa_usuario.CodigoTarefaUsuario = codigoTarefaUsuario;
+            return tarefa_usuario;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CodigoTarefaUsuario
+        {
+            get
+            {
+                return _CodigoTarefaUsuario;
+            }
+            set
+            {
+                if (_CodigoTarefaUsuario != value)
+                {
+                    OnCodigoTarefaUsuarioChanging(value);
+                    ReportPropertyChanging("CodigoTarefaUsuario");
+                    _CodigoTarefaUsuario = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("CodigoTarefaUsuario");
+                    OnCodigoTarefaUsuarioChanged();
+                }
+            }
+        }
+        private global::System.Int32 _CodigoTarefaUsuario;
+        partial void OnCodigoTarefaUsuarioChanging(global::System.Int32 value);
+        partial void OnCodigoTarefaUsuarioChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> CodigoTarefa
+        {
+            get
+            {
+                return _CodigoTarefa;
+            }
+            set
+            {
+                OnCodigoTarefaChanging(value);
+                ReportPropertyChanging("CodigoTarefa");
+                _CodigoTarefa = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CodigoTarefa");
+                OnCodigoTarefaChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _CodigoTarefa;
+        partial void OnCodigoTarefaChanging(Nullable<global::System.Int32> value);
+        partial void OnCodigoTarefaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> CodigoUsuario
+        {
+            get
+            {
+                return _CodigoUsuario;
+            }
+            set
+            {
+                OnCodigoUsuarioChanging(value);
+                ReportPropertyChanging("CodigoUsuario");
+                _CodigoUsuario = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CodigoUsuario");
+                OnCodigoUsuarioChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _CodigoUsuario;
+        partial void OnCodigoUsuarioChanging(Nullable<global::System.Int32> value);
+        partial void OnCodigoUsuarioChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("projeto_scrumModel", "FKTarefaUsuario_Tarefa", "tarefa")]
+        public tarefa tarefa
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tarefa>("projeto_scrumModel.FKTarefaUsuario_Tarefa", "tarefa").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tarefa>("projeto_scrumModel.FKTarefaUsuario_Tarefa", "tarefa").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<tarefa> tarefaReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tarefa>("projeto_scrumModel.FKTarefaUsuario_Tarefa", "tarefa");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<tarefa>("projeto_scrumModel.FKTarefaUsuario_Tarefa", "tarefa", value);
+                }
+            }
+        }
+
+        #endregion
+    }
     
     /// <summary>
     /// No Metadata Documentation available.
@@ -278,6 +1320,150 @@ namespace ML.Date
 
         #endregion
     
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="projeto_scrumModel", Name="usuario_projeto")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class usuario_projeto : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new usuario_projeto object.
+        /// </summary>
+        /// <param name="codigoUsuarioProjeto">Initial value of the CodigoUsuarioProjeto property.</param>
+        public static usuario_projeto Createusuario_projeto(global::System.Int32 codigoUsuarioProjeto)
+        {
+            usuario_projeto usuario_projeto = new usuario_projeto();
+            usuario_projeto.CodigoUsuarioProjeto = codigoUsuarioProjeto;
+            return usuario_projeto;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CodigoUsuarioProjeto
+        {
+            get
+            {
+                return _CodigoUsuarioProjeto;
+            }
+            set
+            {
+                if (_CodigoUsuarioProjeto != value)
+                {
+                    OnCodigoUsuarioProjetoChanging(value);
+                    ReportPropertyChanging("CodigoUsuarioProjeto");
+                    _CodigoUsuarioProjeto = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("CodigoUsuarioProjeto");
+                    OnCodigoUsuarioProjetoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _CodigoUsuarioProjeto;
+        partial void OnCodigoUsuarioProjetoChanging(global::System.Int32 value);
+        partial void OnCodigoUsuarioProjetoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> CodigoUsuario
+        {
+            get
+            {
+                return _CodigoUsuario;
+            }
+            set
+            {
+                OnCodigoUsuarioChanging(value);
+                ReportPropertyChanging("CodigoUsuario");
+                _CodigoUsuario = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CodigoUsuario");
+                OnCodigoUsuarioChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _CodigoUsuario;
+        partial void OnCodigoUsuarioChanging(Nullable<global::System.Int32> value);
+        partial void OnCodigoUsuarioChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> CodigoProjeto
+        {
+            get
+            {
+                return _CodigoProjeto;
+            }
+            set
+            {
+                OnCodigoProjetoChanging(value);
+                ReportPropertyChanging("CodigoProjeto");
+                _CodigoProjeto = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CodigoProjeto");
+                OnCodigoProjetoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _CodigoProjeto;
+        partial void OnCodigoProjetoChanging(Nullable<global::System.Int32> value);
+        partial void OnCodigoProjetoChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("projeto_scrumModel", "FKUsuarioProjeto_Projeto", "projeto")]
+        public projeto projeto
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<projeto>("projeto_scrumModel.FKUsuarioProjeto_Projeto", "projeto").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<projeto>("projeto_scrumModel.FKUsuarioProjeto_Projeto", "projeto").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<projeto> projetoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<projeto>("projeto_scrumModel.FKUsuarioProjeto_Projeto", "projeto");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<projeto>("projeto_scrumModel.FKUsuarioProjeto_Projeto", "projeto", value);
+                }
+            }
+        }
+
+        #endregion
     }
 
     #endregion

@@ -1,8 +1,78 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="projeto_scrumModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="projeto_scrumModelStoreContainer">
+    <EntitySet Name="item" EntityType="projeto_scrumModel.Store.item" store:Type="Tables" Schema="projeto_scrum" />
+    <EntitySet Name="projeto" EntityType="projeto_scrumModel.Store.projeto" store:Type="Tables" Schema="projeto_scrum" />
+    <EntitySet Name="tarefa" EntityType="projeto_scrumModel.Store.tarefa" store:Type="Tables" Schema="projeto_scrum" />
+    <EntitySet Name="tarefa_usuario" EntityType="projeto_scrumModel.Store.tarefa_usuario" store:Type="Tables" Schema="projeto_scrum" />
     <EntitySet Name="usuario" EntityType="projeto_scrumModel.Store.usuario" store:Type="Tables" Schema="projeto_scrum" />
+    <EntitySet Name="usuario_projeto" EntityType="projeto_scrumModel.Store.usuario_projeto" store:Type="Tables" Schema="projeto_scrum" />
+    <AssociationSet Name="FKCodigoItem" Association="projeto_scrumModel.Store.FKCodigoItem">
+      <End Role="item" EntitySet="item" />
+      <End Role="tarefa" EntitySet="tarefa" />
+    </AssociationSet>
+    <AssociationSet Name="FKCodigoProjeto" Association="projeto_scrumModel.Store.FKCodigoProjeto">
+      <End Role="projeto" EntitySet="projeto" />
+      <End Role="item" EntitySet="item" />
+    </AssociationSet>
+    <AssociationSet Name="FKTarefaUsuario_Tarefa" Association="projeto_scrumModel.Store.FKTarefaUsuario_Tarefa">
+      <End Role="tarefa" EntitySet="tarefa" />
+      <End Role="tarefa_usuario" EntitySet="tarefa_usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FKUsuarioProjeto_Projeto" Association="projeto_scrumModel.Store.FKUsuarioProjeto_Projeto">
+      <End Role="projeto" EntitySet="projeto" />
+      <End Role="usuario_projeto" EntitySet="usuario_projeto" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="item">
+    <Key>
+      <PropertyRef Name="CodigoItem" />
+    </Key>
+    <Property Name="CodigoItem" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CodigoProjeto" Type="int" />
+    <Property Name="NomeItem" Type="varchar" MaxLength="45" />
+    <Property Name="DescricaoItem" Type="text" />
+    <Property Name="ValorItem" Type="int" />
+    <Property Name="DataFinalizacaoItem" Type="datetime" />
+    <Property Name="StatusItem" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="projeto">
+    <Key>
+      <PropertyRef Name="CodigoProjeto" />
+    </Key>
+    <Property Name="CodigoProjeto" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NomeProjeto" Type="varchar" MaxLength="45" />
+    <Property Name="DescricaoProjeto" Type="text" />
+    <Property Name="UrlProjeto" Type="varchar" MaxLength="45" />
+    <Property Name="DataProjeto" Type="datetime" />
+    <Property Name="DataFinalizacao" Type="datetime" />
+    <Property Name="CodigoUsuario" Type="int" />
+  </EntityType>
+  <EntityType Name="tarefa">
+    <Key>
+      <PropertyRef Name="CodigoTarefa" />
+    </Key>
+    <Property Name="CodigoTarefa" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CodigoItem" Type="int" />
+    <Property Name="NomeTarefa" Type="varchar" MaxLength="45" />
+    <Property Name="DescricaoTarefa" Type="text" />
+    <Property Name="ValorTarefa" Type="int" />
+    <Property Name="StatusTarefa" Type="varchar" MaxLength="45" />
+    <Property Name="DataFinalizacaoTarefa" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tarefa_usuario">
+    <Key>
+      <PropertyRef Name="CodigoTarefaUsuario" />
+    </Key>
+    <Property Name="CodigoTarefaUsuario" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CodigoTarefa" Type="int" />
+    <Property Name="CodigoUsuario" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6035: The relationship 'FKCodigoUsuario' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+      warning 6035: The relationship 'FKTarefaUsuario_Usuario' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+      warning 6035: The relationship 'FKUsuarioProjeto_Usuario' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+      -->
   <EntityType Name="usuario">
     <Key>
       <PropertyRef Name="CodigoUsuario" />
@@ -15,4 +85,60 @@
     <Property Name="Senha" Type="varchar" MaxLength="45" />
     <Property Name="Data" Type="datetime" />
   </EntityType>
+  <EntityType Name="usuario_projeto">
+    <Key>
+      <PropertyRef Name="CodigoUsuarioProjeto" />
+    </Key>
+    <Property Name="CodigoUsuarioProjeto" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CodigoUsuario" Type="int" />
+    <Property Name="CodigoProjeto" Type="int" />
+  </EntityType>
+  <Association Name="FKCodigoItem">
+    <End Role="item" Type="projeto_scrumModel.Store.item" Multiplicity="0..1" />
+    <End Role="tarefa" Type="projeto_scrumModel.Store.tarefa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="item">
+        <PropertyRef Name="CodigoItem" />
+      </Principal>
+      <Dependent Role="tarefa">
+        <PropertyRef Name="CodigoItem" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKCodigoProjeto">
+    <End Role="projeto" Type="projeto_scrumModel.Store.projeto" Multiplicity="0..1" />
+    <End Role="item" Type="projeto_scrumModel.Store.item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="projeto">
+        <PropertyRef Name="CodigoProjeto" />
+      </Principal>
+      <Dependent Role="item">
+        <PropertyRef Name="CodigoProjeto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKTarefaUsuario_Tarefa">
+    <End Role="tarefa" Type="projeto_scrumModel.Store.tarefa" Multiplicity="0..1" />
+    <End Role="tarefa_usuario" Type="projeto_scrumModel.Store.tarefa_usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tarefa">
+        <PropertyRef Name="CodigoTarefa" />
+      </Principal>
+      <Dependent Role="tarefa_usuario">
+        <PropertyRef Name="CodigoTarefa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKUsuarioProjeto_Projeto">
+    <End Role="projeto" Type="projeto_scrumModel.Store.projeto" Multiplicity="0..1" />
+    <End Role="usuario_projeto" Type="projeto_scrumModel.Store.usuario_projeto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="projeto">
+        <PropertyRef Name="CodigoProjeto" />
+      </Principal>
+      <Dependent Role="usuario_projeto">
+        <PropertyRef Name="CodigoProjeto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

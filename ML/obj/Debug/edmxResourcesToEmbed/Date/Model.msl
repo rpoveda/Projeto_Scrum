@@ -1,6 +1,54 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="projeto_scrumModelStoreContainer" CdmEntityContainer="projeto_scrumEntities">
+    <EntitySetMapping Name="item">
+      <EntityTypeMapping TypeName="projeto_scrumModel.item">
+        <MappingFragment StoreEntitySet="item">
+          <ScalarProperty Name="CodigoItem" ColumnName="CodigoItem" />
+          <ScalarProperty Name="CodigoProjeto" ColumnName="CodigoProjeto" />
+          <ScalarProperty Name="NomeItem" ColumnName="NomeItem" />
+          <ScalarProperty Name="DescricaoItem" ColumnName="DescricaoItem" />
+          <ScalarProperty Name="ValorItem" ColumnName="ValorItem" />
+          <ScalarProperty Name="DataFinalizacaoItem" ColumnName="DataFinalizacaoItem" />
+          <ScalarProperty Name="StatusItem" ColumnName="StatusItem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="projeto">
+      <EntityTypeMapping TypeName="projeto_scrumModel.projeto">
+        <MappingFragment StoreEntitySet="projeto">
+          <ScalarProperty Name="CodigoProjeto" ColumnName="CodigoProjeto" />
+          <ScalarProperty Name="NomeProjeto" ColumnName="NomeProjeto" />
+          <ScalarProperty Name="DescricaoProjeto" ColumnName="DescricaoProjeto" />
+          <ScalarProperty Name="UrlProjeto" ColumnName="UrlProjeto" />
+          <ScalarProperty Name="DataProjeto" ColumnName="DataProjeto" />
+          <ScalarProperty Name="DataFinalizacao" ColumnName="DataFinalizacao" />
+          <ScalarProperty Name="CodigoUsuario" ColumnName="CodigoUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tarefa">
+      <EntityTypeMapping TypeName="projeto_scrumModel.tarefa">
+        <MappingFragment StoreEntitySet="tarefa">
+          <ScalarProperty Name="CodigoTarefa" ColumnName="CodigoTarefa" />
+          <ScalarProperty Name="CodigoItem" ColumnName="CodigoItem" />
+          <ScalarProperty Name="NomeTarefa" ColumnName="NomeTarefa" />
+          <ScalarProperty Name="DescricaoTarefa" ColumnName="DescricaoTarefa" />
+          <ScalarProperty Name="ValorTarefa" ColumnName="ValorTarefa" />
+          <ScalarProperty Name="StatusTarefa" ColumnName="StatusTarefa" />
+          <ScalarProperty Name="DataFinalizacaoTarefa" ColumnName="DataFinalizacaoTarefa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tarefa_usuario">
+      <EntityTypeMapping TypeName="projeto_scrumModel.tarefa_usuario">
+        <MappingFragment StoreEntitySet="tarefa_usuario">
+          <ScalarProperty Name="CodigoTarefaUsuario" ColumnName="CodigoTarefaUsuario" />
+          <ScalarProperty Name="CodigoTarefa" ColumnName="CodigoTarefa" />
+          <ScalarProperty Name="CodigoUsuario" ColumnName="CodigoUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="usuario">
       <EntityTypeMapping TypeName="projeto_scrumModel.usuario">
         <MappingFragment StoreEntitySet="usuario">
@@ -10,6 +58,15 @@
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Senha" ColumnName="Senha" />
           <ScalarProperty Name="Data" ColumnName="Data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuario_projeto">
+      <EntityTypeMapping TypeName="projeto_scrumModel.usuario_projeto">
+        <MappingFragment StoreEntitySet="usuario_projeto">
+          <ScalarProperty Name="CodigoUsuarioProjeto" ColumnName="CodigoUsuarioProjeto" />
+          <ScalarProperty Name="CodigoUsuario" ColumnName="CodigoUsuario" />
+          <ScalarProperty Name="CodigoProjeto" ColumnName="CodigoProjeto" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

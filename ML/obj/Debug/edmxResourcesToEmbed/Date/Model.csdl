@@ -1,8 +1,80 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="projeto_scrumModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
   <EntityContainer Name="projeto_scrumEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="item" EntityType="projeto_scrumModel.item" />
+    <EntitySet Name="projeto" EntityType="projeto_scrumModel.projeto" />
+    <EntitySet Name="tarefa" EntityType="projeto_scrumModel.tarefa" />
+    <EntitySet Name="tarefa_usuario" EntityType="projeto_scrumModel.tarefa_usuario" />
     <EntitySet Name="usuario" EntityType="projeto_scrumModel.usuario" />
+    <EntitySet Name="usuario_projeto" EntityType="projeto_scrumModel.usuario_projeto" />
+    <AssociationSet Name="FKCodigoItem" Association="projeto_scrumModel.FKCodigoItem">
+      <End Role="item" EntitySet="item" />
+      <End Role="tarefa" EntitySet="tarefa" />
+    </AssociationSet>
+    <AssociationSet Name="FKCodigoProjeto" Association="projeto_scrumModel.FKCodigoProjeto">
+      <End Role="projeto" EntitySet="projeto" />
+      <End Role="item" EntitySet="item" />
+    </AssociationSet>
+    <AssociationSet Name="FKUsuarioProjeto_Projeto" Association="projeto_scrumModel.FKUsuarioProjeto_Projeto">
+      <End Role="projeto" EntitySet="projeto" />
+      <End Role="usuario_projeto" EntitySet="usuario_projeto" />
+    </AssociationSet>
+    <AssociationSet Name="FKTarefaUsuario_Tarefa" Association="projeto_scrumModel.FKTarefaUsuario_Tarefa">
+      <End Role="tarefa" EntitySet="tarefa" />
+      <End Role="tarefa_usuario" EntitySet="tarefa_usuario" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="item">
+    <Key>
+      <PropertyRef Name="CodigoItem" />
+    </Key>
+    <Property Name="CodigoItem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodigoProjeto" Type="Int32" />
+    <Property Name="NomeItem" Type="String" />
+    <Property Name="DescricaoItem" Type="String" />
+    <Property Name="ValorItem" Type="Int32" />
+    <Property Name="DataFinalizacaoItem" Type="DateTime" />
+    <Property Name="StatusItem" Type="String" />
+    <NavigationProperty Name="tarefa" Relationship="projeto_scrumModel.FKCodigoItem" FromRole="item" ToRole="tarefa" />
+    <NavigationProperty Name="projeto" Relationship="projeto_scrumModel.FKCodigoProjeto" FromRole="item" ToRole="projeto" />
+  </EntityType>
+  <EntityType Name="projeto">
+    <Key>
+      <PropertyRef Name="CodigoProjeto" />
+    </Key>
+    <Property Name="CodigoProjeto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NomeProjeto" Type="String" />
+    <Property Name="DescricaoProjeto" Type="String" />
+    <Property Name="UrlProjeto" Type="String" />
+    <Property Name="DataProjeto" Type="DateTime" />
+    <Property Name="DataFinalizacao" Type="DateTime" />
+    <Property Name="CodigoUsuario" Type="Int32" />
+    <NavigationProperty Name="item" Relationship="projeto_scrumModel.FKCodigoProjeto" FromRole="projeto" ToRole="item" />
+    <NavigationProperty Name="usuario_projeto" Relationship="projeto_scrumModel.FKUsuarioProjeto_Projeto" FromRole="projeto" ToRole="usuario_projeto" />
+  </EntityType>
+  <EntityType Name="tarefa">
+    <Key>
+      <PropertyRef Name="CodigoTarefa" />
+    </Key>
+    <Property Name="CodigoTarefa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodigoItem" Type="Int32" />
+    <Property Name="NomeTarefa" Type="String" />
+    <Property Name="DescricaoTarefa" Type="String" />
+    <Property Name="ValorTarefa" Type="Int32" />
+    <Property Name="StatusTarefa" Type="String" />
+    <Property Name="DataFinalizacaoTarefa" Type="DateTime" />
+    <NavigationProperty Name="item" Relationship="projeto_scrumModel.FKCodigoItem" FromRole="tarefa" ToRole="item" />
+    <NavigationProperty Name="tarefa_usuario" Relationship="projeto_scrumModel.FKTarefaUsuario_Tarefa" FromRole="tarefa" ToRole="tarefa_usuario" />
+  </EntityType>
+  <EntityType Name="tarefa_usuario">
+    <Key>
+      <PropertyRef Name="CodigoTarefaUsuario" />
+    </Key>
+    <Property Name="CodigoTarefaUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodigoTarefa" Type="Int32" />
+    <Property Name="CodigoUsuario" Type="Int32" />
+    <NavigationProperty Name="tarefa" Relationship="projeto_scrumModel.FKTarefaUsuario_Tarefa" FromRole="tarefa_usuario" ToRole="tarefa" />
+  </EntityType>
   <EntityType Name="usuario">
     <Key>
       <PropertyRef Name="CodigoUsuario" />
@@ -15,4 +87,61 @@
     <Property Name="Senha" Type="String" />
     <Property Name="Data" Type="DateTime" />
   </EntityType>
+  <EntityType Name="usuario_projeto">
+    <Key>
+      <PropertyRef Name="CodigoUsuarioProjeto" />
+    </Key>
+    <Property Name="CodigoUsuarioProjeto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodigoUsuario" Type="Int32" />
+    <Property Name="CodigoProjeto" Type="Int32" />
+    <NavigationProperty Name="projeto" Relationship="projeto_scrumModel.FKUsuarioProjeto_Projeto" FromRole="usuario_projeto" ToRole="projeto" />
+  </EntityType>
+  <Association Name="FKCodigoItem">
+    <End Role="item" Type="projeto_scrumModel.item" Multiplicity="0..1" />
+    <End Role="tarefa" Type="projeto_scrumModel.tarefa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="item">
+        <PropertyRef Name="CodigoItem" />
+      </Principal>
+      <Dependent Role="tarefa">
+        <PropertyRef Name="CodigoItem" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKCodigoProjeto">
+    <End Role="projeto" Type="projeto_scrumModel.projeto" Multiplicity="0..1" />
+    <End Role="item" Type="projeto_scrumModel.item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="projeto">
+        <PropertyRef Name="CodigoProjeto" />
+      </Principal>
+      <Dependent Role="item">
+        <PropertyRef Name="CodigoProjeto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKUsuarioProjeto_Projeto">
+    <End Role="projeto" Type="projeto_scrumModel.projeto" Multiplicity="0..1" />
+    <End Role="usuario_projeto" Type="projeto_scrumModel.usuario_projeto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="projeto">
+        <PropertyRef Name="CodigoProjeto" />
+      </Principal>
+      <Dependent Role="usuario_projeto">
+        <PropertyRef Name="CodigoProjeto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKTarefaUsuario_Tarefa">
+    <End Role="tarefa" Type="projeto_scrumModel.tarefa" Multiplicity="0..1" />
+    <End Role="tarefa_usuario" Type="projeto_scrumModel.tarefa_usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tarefa">
+        <PropertyRef Name="CodigoTarefa" />
+      </Principal>
+      <Dependent Role="tarefa_usuario">
+        <PropertyRef Name="CodigoTarefa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>
