@@ -23,7 +23,7 @@ namespace BL
 
             if (objUsuario != null)
             {
-                HttpContext.Current.Cache["objUsuario"] = objUsuario;
+                HttpContext.Current.Session["objUsuario"] = objUsuario;
                 FormsAuthentication.SignOut();
                 FormsAuthentication.SetAuthCookie(objUsuario.CodigoUsuario.ToString(), blLembrar);
                 return true;

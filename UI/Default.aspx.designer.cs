@@ -18,9 +18,9 @@ namespace UI {
         /// <remarks>
         /// Auto-generated property.
         /// </remarks>
-        public new Site Master {
+        public new UI.Site Master {
             get {
-                return ((Site)(base.Master));
+                return ((UI.Site)(base.Master));
             }
         }
     }

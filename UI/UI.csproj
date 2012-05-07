@@ -61,6 +61,7 @@
     <Content Include="bootstrap\js\bootstrap.js" />
     <Content Include="bootstrap\js\bootstrap.min.js" />
     <Content Include="Default.aspx" />
+    <Content Include="DetalheProjeto.aspx" />
     <Content Include="img\ajax-loader.gif" />
     <Content Include="Login.aspx" />
     <Content Include="script\jquery-1.7.2.min.js" />
@@ -79,6 +80,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DetalheProjeto.aspx.cs">
+      <DependentUpon>DetalheProjeto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetalheProjeto.aspx.designer.cs">
+      <DependentUpon>DetalheProjeto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

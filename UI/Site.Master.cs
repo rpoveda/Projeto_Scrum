@@ -21,7 +21,16 @@ namespace UI
 
         private void PreencheUsuario()
         {
-            var objUsuario = (usuario)Cache["objUsuario"];
+            var objUsuario = (usuario)Session["objUsuario"];
+            if(objUsuario == null && !string.IsNullOrEmpty(HttpContext.Current.User.Identity.Name))
+            {
+                int idUsuario = Convert.ToInt16(HttpContext.Current.User.Identity.Name);
+                objUsuario = new UsuarioDAO().obter(u => u.CodigoUsuario == idUsuario);
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
             lblNomeUsuario.Text = objUsuario.Nome + " " + objUsuario.Sobrenome;
         }
     }
