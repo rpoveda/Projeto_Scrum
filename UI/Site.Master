@@ -1,0 +1,56 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="UI.Site" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <title>Projeto Scrum</title>
+    <script src="script/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $.fn.activeMenu = function (activeClass) {
+
+                var comp = $(this);
+
+                $(comp).click(function () {
+                    removeClass();
+                    $(this).addClass(activeClass);
+                });
+
+
+                function removeClass() {
+                    $(comp).each(function () {
+                        if ($(this).hasClass(activeClass))
+                            $(this).removeClass(activeClass);
+                    });
+                }
+
+            };
+
+            $('.nav li').activeMenu('active');
+        });
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="brand" href="#"><asp:Label runat="server" ID="lblNomeUsuario" /></a>
+                    <ul class="nav">
+                        <li class="active"><a href="#">Home</a> </li>
+                        <li><a href="#">Mensagens</a></li>
+                        <li><a href="#">Profile</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

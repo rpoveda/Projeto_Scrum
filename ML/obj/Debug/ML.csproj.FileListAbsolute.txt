@@ -1,0 +1,6 @@
+C:\Projects\Developer\Project_Scrum\ML\bin\Debug\ML.dll.config
+C:\Projects\Developer\Project_Scrum\ML\bin\Debug\ML.dll
+C:\Projects\Developer\Project_Scrum\ML\bin\Debug\ML.pdb
+C:\Projects\Developer\Project_Scrum\ML\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\Developer\Project_Scrum\ML\obj\Debug\ML.dll
+C:\Projects\Developer\Project_Scrum\ML\obj\Debug\ML.pdb

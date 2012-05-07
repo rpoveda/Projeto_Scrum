@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="projeto_scrumModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="projeto_scrumModelStoreContainer">
+    <EntitySet Name="usuario" EntityType="projeto_scrumModel.Store.usuario" store:Type="Tables" Schema="projeto_scrum" />
+  </EntityContainer>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="CodigoUsuario" />
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="CodigoUsuario" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="varchar" MaxLength="45" />
+    <Property Name="Sobrenome" Type="varchar" MaxLength="45" />
+    <Property Name="Email" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="Senha" Type="varchar" MaxLength="45" />
+    <Property Name="Data" Type="datetime" />
+  </EntityType>
+</Schema>

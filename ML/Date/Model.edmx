@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="projeto_scrumModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="projeto_scrumModelStoreContainer">
+          <EntitySet Name="usuario" EntityType="projeto_scrumModel.Store.usuario" store:Type="Tables" Schema="projeto_scrum" />
+        </EntityContainer>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="CodigoUsuario" />
+            <PropertyRef Name="Email" />
+          </Key>
+          <Property Name="CodigoUsuario" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="varchar" MaxLength="45" />
+          <Property Name="Sobrenome" Type="varchar" MaxLength="45" />
+          <Property Name="Email" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="Senha" Type="varchar" MaxLength="45" />
+          <Property Name="Data" Type="datetime" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="projeto_scrumModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="projeto_scrumEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="usuario" EntityType="projeto_scrumModel.usuario" />
+        </EntityContainer>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="CodigoUsuario" />
+            <PropertyRef Name="Email" />
+          </Key>
+          <Property Name="CodigoUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" />
+          <Property Name="Sobrenome" Type="String" />
+          <Property Name="Email" Type="String" Nullable="false" />
+          <Property Name="Senha" Type="String" />
+          <Property Name="Data" Type="DateTime" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="projeto_scrumModelStoreContainer" CdmEntityContainer="projeto_scrumEntities">
+          <EntitySetMapping Name="usuario"><EntityTypeMapping TypeName="projeto_scrumModel.usuario"><MappingFragment StoreEntitySet="usuario">
+            <ScalarProperty Name="CodigoUsuario" ColumnName="CodigoUsuario" />
+            <ScalarProperty Name="Nome" ColumnName="Nome" />
+            <ScalarProperty Name="Sobrenome" ColumnName="Sobrenome" />
+            <ScalarProperty Name="Email" ColumnName="Email" />
+            <ScalarProperty Name="Senha" ColumnName="Senha" />
+            <ScalarProperty Name="Data" ColumnName="Data" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model">
+        <EntityTypeShape EntityType="projeto_scrumModel.usuario" Width="1.5" PointX="0.75" PointY="0.75" Height="1.9210009765625" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

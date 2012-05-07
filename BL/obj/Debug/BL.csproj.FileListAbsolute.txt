@@ -1,0 +1,7 @@
+C:\Projects\Developer\Project_Scrum\BL\bin\Debug\BL.dll
+C:\Projects\Developer\Project_Scrum\BL\bin\Debug\BL.pdb
+C:\Projects\Developer\Project_Scrum\BL\bin\Debug\ML.dll
+C:\Projects\Developer\Project_Scrum\BL\bin\Debug\ML.pdb
+C:\Projects\Developer\Project_Scrum\BL\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\Developer\Project_Scrum\BL\obj\Debug\BL.dll
+C:\Projects\Developer\Project_Scrum\BL\obj\Debug\BL.pdb

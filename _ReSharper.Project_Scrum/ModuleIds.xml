@@ -1,0 +1,6 @@
+<Modules>
+  <Module PersistentId="0EE9AC92-EDB4-4EA0-84DB-9D1CF6E2CB77" ModuleId="ML" />
+  <Module PersistentId="D9E064BC-6C97-4193-9C03-F14DCC21FF03" ModuleId="UI" />
+  <Module PersistentId="2EB26030-DE31-4605-A698-6AE9CF2BEE4D" ModuleId="BL" />
+  <Module PersistentId="System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" ModuleId="System.Web" />
+</Modules>
