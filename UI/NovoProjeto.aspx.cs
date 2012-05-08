@@ -37,31 +37,31 @@ namespace UI
         }
 
         [WebMethod]
-        public static string adicionaitem(int codigoprojeto, string nome, string descricao, int valor, string datafinalizacao)
+        public static string adicionaItem(string nomeItem, string descricaoItem, int valorItem, string datafinalizacaoItem, string codigoprojeto)
         {
             item objItem = new item()
             {
                 CodigoProjeto = Convert.ToInt16(codigoprojeto),
-                NomeItem = nome,
-                DescricaoItem = descricao,
-                ValorItem = Convert.ToInt16(valor),
-                DataFinalizacaoItem = Convert.ToDateTime(datafinalizacao)
+                NomeItem = nomeItem,
+                DescricaoItem = descricaoItem,
+                ValorItem = Convert.ToInt16(valorItem),
+                DataFinalizacaoItem = Convert.ToDateTime(datafinalizacaoItem)
             };
 
             if(new ItemDAO().incluir(objItem))
             {
-                objItem = new ItemDAO().obter(i => i.NomeItem == nome && i.DescricaoItem == descricao);
+                objItem = new ItemDAO().obter(i => i.NomeItem == nomeItem && i.DescricaoItem == descricaoItem);
             }
 
             var tr = "";
             tr += "<tr>";
-            tr += "<td>" + objItem.CodigoItem.ToString() + "</td>";
+            tr += "<td>" + objItem.CodigoItem + "</td>";
             tr += "<td>" + objItem.NomeItem + "</td>";
             tr += "<td>" + objItem.ValorItem.ToString() + "</td>";
             tr += "<td><button class='btn btn-remove-item' id='" + objItem.CodigoItem.ToString() +
                   "'>Remover</button></td>";
-            tr += "</tr>";
-
+            tr += "</tr>@";
+            tr += "<option value='"+objItem.CodigoItem+"'>"+ objItem.NomeItem + "</option>";
             return tr;
         }
     }

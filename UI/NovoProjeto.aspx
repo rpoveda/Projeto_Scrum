@@ -24,6 +24,7 @@
                     var descricaoProjeto = $('#<%= txtDescricaoProjeto.ClientID %>').val();
                     var urlProjeto = $('#<%= txtUrlProjeto.ClientID %>').val();
                     var dataFinalizacaoProjeto = $('#<%= txtDataFinalizacao.ClientID %>').val();
+                    $('#<%= txtDataFinalizacao.ClientID %>').after(imgLoader);
                     $.ajax({
                         type: "POST",
                         url: "NovoProjeto.aspx/adicionaProjeto",
@@ -46,29 +47,33 @@
 
                 $('#<%= btbSalvarItem.ClientID %>').click(function (e) {
                     e.preventDefault();
-                    var codigoProjeto = $('#hfCodigoProjeto').val();
-                    var nomeItem = $('#<%= txtNomeItem.ClientID %>').val();
-                    var descricaoItem = $('#<%= txtDescricaoItem.ClientID %>').val();
-                    var valorItem = $('#<%= txtValorItem.ClientID %>').val();
-                    var dataFinalizacaItem = $('#<%= txtDataFinalizacao.ClientID %>').val();
+                    var codigoProjetoj = $('#hfCodigoProjeto').val();
+                    var nomeItemj = $('#<%= txtNomeItem.ClientID %>').val();
+                    var descricaoItemj = $('#<%= txtDescricaoItem.ClientID %>').val();
+                    var valorItemj = $('#<%= txtValorItem.ClientID %>').val();
+                    var dataFinalizacaItemj = $('#<%= txtDtFinalizacaoItem.ClientID %>').val();
+
                     $.ajax({
                         type: "POST",
-                        url: "NovoProjeto.aspx/adicionaitem",
-                        data: "{codigoprojeto = " + codigoProjeto + ", nome: '" + nomeItem + "', descricao: '" + descricaoItem + "', valor: " + valorItem + ", datafinalizacao: '" + dataFinalizacaItem + "'}",
+                        url: "NovoProjeto.aspx/adicionaItem",
+                        data: "{nomeItem: '" + nomeItemj + "', descricaoItem: '" + descricaoItemj + "', valorItem: '" + valorItemj + "', datafinalizacaoItem: '" + dataFinalizacaItemj + "', codigoprojeto: '" + codigoProjetoj + "'}",
                         contentType: "application/json",
                         success: function (data) {
-                            var retorno = data.d;
+                            var retorno = data.d.split('@');
                             alert("Item salvo com sucesso!");
-                            $('.tbody-item').append(retorno);
+                            $('.tbody-item').append(retorno[0]);
+                            $('#<%= ddlTarefa.ClientID %>').append(retorno[1]);
                         },
                         error: function (data) {
-                            alert(data.d);
+                            alert("Não foi póssivel executar o login no momento.\n Tente novamente mais tarde.");
                         },
                         complete: function () {
                             $(".imgLoader").hide();
                         }
                     });
                 });
+
+
             });
     </script>
 </asp:Content>
@@ -137,12 +142,6 @@
                               </tr>
                             </thead>
                             <tbody class="tbody-item">
-                              <tr>
-                                <td>1</td>
-                                <td>ClienteDAO</td>
-                                <td>2</td>
-                                <td><button class="btn btn-remove-item" id="codigo">Remover</button></td>
-                              </tr>
                             </tbody>
                           </table>
                         </div>
