@@ -13,49 +13,40 @@ namespace UI {
     public partial class NovoProjeto {
         
         /// <summary>
-        /// txtNome control.
+        /// txtNomeProjeto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNome;
+        protected global::System.Web.UI.WebControls.TextBox txtNomeProjeto;
         
         /// <summary>
-        /// txtSobrenome control.
+        /// txtDescricaoProjeto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSobrenome;
+        protected global::System.Web.UI.WebControls.TextBox txtDescricaoProjeto;
         
         /// <summary>
-        /// txtEmailCad control.
+        /// txtUrlProjeto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmailCad;
+        protected global::System.Web.UI.WebControls.TextBox txtUrlProjeto;
         
         /// <summary>
-        /// txtSenhaCad control.
+        /// txtDataFinalizacao control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSenhaCad;
-        
-        /// <summary>
-        /// txtConfSenhaCad control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtConfSenhaCad;
+        protected global::System.Web.UI.WebControls.TextBox txtDataFinalizacao;
         
         /// <summary>
         /// btnCadastro control.
@@ -67,12 +58,111 @@ namespace UI {
         protected global::System.Web.UI.WebControls.Button btnCadastro;
         
         /// <summary>
-        /// btnCancelaCad control.
+        /// lblProjeto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelaCad;
+        protected global::System.Web.UI.WebControls.Label lblProjeto;
+        
+        /// <summary>
+        /// txtNomeItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNomeItem;
+        
+        /// <summary>
+        /// txtDescricaoItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDescricaoItem;
+        
+        /// <summary>
+        /// txtValorItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtValorItem;
+        
+        /// <summary>
+        /// txtDtFinalizacaoItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDtFinalizacaoItem;
+        
+        /// <summary>
+        /// btbSalvarItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btbSalvarItem;
+        
+        /// <summary>
+        /// ddlTarefa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTarefa;
+        
+        /// <summary>
+        /// txtNomeTarefa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNomeTarefa;
+        
+        /// <summary>
+        /// txtDescricaoTarefa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDescricaoTarefa;
+        
+        /// <summary>
+        /// txtValorTarefa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtValorTarefa;
+        
+        /// <summary>
+        /// txtDataFinalizacaoTarefa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDataFinalizacaoTarefa;
+        
+        /// <summary>
+        /// btnSalvarTarefa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSalvarTarefa;
     }
 }
